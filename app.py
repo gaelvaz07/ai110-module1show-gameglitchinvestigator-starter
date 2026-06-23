@@ -1,11 +1,13 @@
 import random
 import streamlit as st
 
+
 def get_range_for_difficulty(difficulty: str):
     if difficulty == "Easy":
         return 1, 20
     if difficulty == "Normal":
         return 1, 100
+# FIXME: Logic breaks here
     if difficulty == "Hard":
         return 1, 50
     return 1, 100
@@ -33,6 +35,7 @@ def check_guess(guess, secret):
     if guess == secret:
         return "Win", "🎉 Correct!"
 
+# FIXME: Logic breaks here
     try:
         if guess > secret:
             return "Too High", "📈 Go HIGHER!"
@@ -53,7 +56,8 @@ def update_score(current_score: int, outcome: str, attempt_number: int):
         if points < 10:
             points = 10
         return current_score + points
-
+    
+# FIXME: Logic breaks here
     if outcome == "Too High":
         if attempt_number % 2 == 0:
             return current_score + 5
